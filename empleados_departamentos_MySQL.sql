@@ -161,3 +161,84 @@ from departamentos;
 select nomEmp,cargoE
 from empleados
 order by salEmp;
+
+/*8. Listar los salarios y comisiones de los empleados del departamento 2000, ordenado por comisión
+9. Listar todas las comisiones
+10. Obtener el valor total a pagar que resulta de sumar a los empleados del departamento 3000 una
+bonificación de 500.000, en orden alfabético del empleado
+11. Obtener la lista de los empleados que ganan una comisión superior a su sueldo.
+12. Listar los empleados cuya comisión es menor o igual que el 30% de su sueldo.*/
+
+/*select e.salEmp,e.comisionE
+from empleados e
+where codDepto.e=codDepto.departamentos and codDepto='2000'
+order by comisionE;*/
+
+select salEmp,comisionE
+from empleados
+order by comisionE;
+
+
+
+select distinct comisionE
+from empleados;
+
+select nomEmp,salEmp,(salemp+500000) as 'pago estimado'
+from empleados
+where codDepto='3000'
+order by nomEmp;
+
+select nomEmp,salemp,comisionE
+from empleados
+where comisionE>salEmp;
+
+select nomEmp,salemp,comisionE
+from Empleados
+where comisionE<=0.30*salEmp;
+
+/*13.Elabore un listado donde para cada fila, figure ‘Nombre’ y ‘Cargo’ antes del valor respectivo para cada empleado.
+14. Hallar el salario y la comisión de aquellos empleados cuyo número de documento de identidad es
+superior al '19.709.802'
+15. Muestra los empleados cuyo nombre empiece entre las letras J y Z (rango).
+Liste estos empleados y su cargo por orden alfabético.
+16. Listar el salario, la comisión, el salario total (salario + comisión), documento de identidad del
+empleado y nombre, de aquellos empleados que tienen comisión superior a 1.000.000, ordenar el
+informe por el número del documento de identidad
+17. Obtener un listado similar al anterior, pero de aquellos empleados que NO tienen comisión
+18. Hallar los empleados cuyo nombre no contiene la cadena "MA"
+19. Obtener los nombres de los departamentos que no sean “Ventas” ni “Investigación” NI
+'MANTENIMIENTO', ordenados por ciudad.*/
+
+select nomEmp as 'Nombre',cargoE as 'Cargo'
+from empleados;
+
+select nomEmp,salEmp,comisionE,ndiEmp
+from empleados
+where ndiEmp>'19709802'
+order by ndiEmp;
+
+select nomEmp
+from empleados	
+where  lower(nomEmp)> 'j' and lower(nomEmp)<'z'
+order by nomEmp;
+
+select salEmp,comisionE, salEmp+comisionE as 'salario total', ndiemp,nomemp
+from empleados
+where comisione>1000000
+order by ndiemp;
+
+select salEmp,comisionE, salEmp+comisionE as 'salario total', ndiemp,nomemp
+from empleados
+where comisione=0
+order by ndiemp;
+
+select nomEmp
+from empleados
+where lower(nomEmp) not like '%ma%';
+
+
+
+select distinct nombreDpto
+from departamentos
+where lower(nombreDpto) not in ('ventas' ,'investigacion','mantenimiento')
+order by ciudad;
