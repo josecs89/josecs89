@@ -127,3 +127,37 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2017-06-19 16:00:50
+-- ahora empezamos apracticar 28-3-24
+
+-- 1. Obtener los datos completos de los empleados.
+/*2. Obtener los datos completos de los departamentos
+3. Obtener los datos de los empleados con cargo 'Secretaria'.
+4. Obtener el nombre y salario de los empleados.
+5. Obtener los datos de los empleados vendedores, ordenado por nombre.
+6. Listar el nombre de los departamentos
+7. Obtener el nombre y cargo de todos los empleados, ordenado por salario*/
+
+select *
+from empleados;
+
+select *
+from departamentos;
+
+select * 
+from empleados
+where cargoE='Secretaria';
+
+select nomEmp,salEmp
+from empleados;
+
+select *
+from empleados
+where cargoE='Vendedor'
+order by nomEmp;
+
+select distinct nombreDpto
+from departamentos;
+
+select nomEmp,cargoE
+from empleados
+order by salEmp;
